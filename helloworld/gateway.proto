@@ -1,0 +1,34 @@
+syntax = "proto3";
+package example;
+
+import "google/api/annotations.proto";
+
+message StringMessage {
+   string value = 1;
+}
+
+message IntNum {
+   int64 value = 1;
+}
+
+message TestList {
+   repeated string value = 1;
+}
+ 
+service YourService {
+  rpc Echo(StringMessage) returns (StringMessage) {
+    option (google.api.http) = {
+      post: "/user/login"
+      body: "*"
+    };
+  }
+}
+
+service TestService {
+  rpc Echo(IntNum) returns (TestList) {
+    option (google.api.http) = {
+      post: "/user/logout"
+      body: "*"
+    };
+  }
+}
